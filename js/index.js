@@ -1,7 +1,7 @@
-const menuBtn = document.querySelectorAll(".hamburger");
+const menuBtn = document.querySelector(".hamburger");
 
-const navLinks = document.querySelectorAll(".header__nav-links");
+const navMenu = document.querySelector(".header__nav-menu");
 
-menuBtn[0].addEventListener("click", () => {
-  navLinks[0].classList.toggle("active");
+menuBtn.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
 });
