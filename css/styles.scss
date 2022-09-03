@@ -26,7 +26,7 @@ $breakpoints: (
   "xl": 80em,
   // 1280px
   "xxl": 90em
-    // 1440px,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    // 1440px,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 
 @mixin respond-above($breakpoint) {
@@ -181,6 +181,7 @@ p {
       @include respond-above(xxl) {
         background-color: map-get($neutral-colors, white);
         font-size: 16px;
+        padding: 1.1rem 1.6rem;
       }
     }
 
@@ -213,8 +214,10 @@ p {
     margin-bottom: 35px;
 
     @include respond-above(xxl) {
-      font-size: 3.5rem;
+      font-size: 3.3rem;
       letter-spacing: 10px;
+      margin-top: 35px;
+      margin-bottom: 70px;
     }
   }
 
@@ -230,16 +233,37 @@ p {
   flex-wrap: wrap;
   width: 100%;
 
+  @include respond-above(xxl) {
+    display: grid;
+    grid-template-areas:
+      "one two"
+      "three four"
+      "five six";
+    // display: flex;
+    // flex-wrap: nowrap;
+    // flex: 1 1 50%;
+    // width: 50%;
+  }
+
   h2 {
     font-size: 32px;
     font-weight: 900;
     margin-bottom: 25px;
+
+    @include respond-above(xxl) {
+      font-size: 39px;
+    }
   }
 
   p {
     font-size: 17px;
     line-height: 2;
     margin-bottom: 25px;
+
+    @include respond-above(xxl) {
+      font-size: 18px;
+      line-height: 1.6;
+    }
   }
 
   a {
@@ -264,17 +288,65 @@ p {
       padding: 0.1rem;
       border-radius: 30px;
     }
+
+    @include respond-above(xxl) {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      padding: 1rem 8.5rem;
+      line-height: 1.2;
+    }
+  }
+
+  &__one {
+    @include respond-above(xxl) {
+      grid-area: one;
+      padding-inline: 9.8rem;
+    }
   }
 
   &__two {
     .desktop-transform {
       display: none;
+
+      @include respond-above(xxl) {
+        display: block;
+      }
+    }
+
+    @include respond-above(xxl) {
+      grid-area: two;
+
+      .mobile-transform {
+        display: none;
+      }
     }
   }
 
   &__three {
     .desktop-standout {
       display: none;
+
+      @include respond-above(xxl) {
+        display: block;
+      }
+    }
+
+    @include respond-above(xxl) {
+      grid-area: three;
+
+      .mobile-standout {
+        display: none;
+      }
+    }
+  }
+
+  &__four {
+    @include respond-above(xxl) {
+      grid-area: four;
+      padding-inline: 5.6rem;
     }
   }
 
@@ -288,10 +360,24 @@ p {
     justify-content: flex-end;
     padding: 1.5rem 1.4rem 3rem;
 
+    @include respond-above(xxl) {
+      background-image: url(../images/desktop/image-graphic-design.jpg);
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      grid-area: five;
+      align-items: center;
+      text-align: center;
+    }
+
     h2 {
       color: map-get($primary-colors, ds-cyan);
       font-size: 26px;
       margin: 0px;
+
+      @include respond-above(xxl) {
+        margin-bottom: 30px;
+      }
     }
 
     p {
@@ -301,6 +387,11 @@ p {
       font-weight: 600;
       line-height: 1.6;
       margin-bottom: 0px;
+
+      @include respond-above(xxl) {
+        padding-inline: 13rem;
+        margin-bottom: 10px;
+      }
     }
   }
 
@@ -314,10 +405,23 @@ p {
     justify-content: flex-end;
     padding: 1.5rem 1.4rem 3rem;
 
+    @include respond-above(xxl) {
+      background-image: url(../images/desktop/image-photography.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      grid-area: six;
+      align-items: center;
+      text-align: center;
+    }
+
     h2 {
       color: map-get($primary-colors, dark-blue);
       font-size: 26px;
       margin: 0px;
+
+      @include respond-above(xxl) {
+        margin-bottom: 30px;
+      }
     }
 
     p {
@@ -327,6 +431,11 @@ p {
       font-weight: 600;
       line-height: 1.6;
       margin-bottom: 0px;
+
+      @include respond-above(xxl) {
+        padding-inline: 9rem;
+        margin-bottom: 10px;
+      }
     }
   }
 }
@@ -340,6 +449,79 @@ p {
   padding: 3rem 1.5rem 5rem;
   font-weight: 600;
 
+  @include respond-above(xxl) {
+    padding: 10rem;
+
+    p + h4 {
+      margin-top: 60px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      margin-bottom: 30px;
+    }
+
+    p {
+      margin-bottom: 35px;
+
+      @include respond-above(xxl) {
+        font-size: 17px;
+      }
+    }
+
+    h4 {
+      margin-bottom: 10px;
+    }
+
+    h4 + p {
+      font-size: 14px;
+      color: map-get($neutral-colors, grayishBlue);
+    }
+    @include respond-above(xxl) {
+      display: grid;
+      grid-template-areas: "one two three";
+      gap: 1.5rem;
+      padding-top: 3rem;
+    }
+  }
+
+  &__emily {
+    grid-area: one;
+
+    @include respond-above(xxl) {
+      img + p {
+        width: 20em;
+      }
+    }
+  }
+
+  &__thomas {
+    grid-area: two;
+
+    @include respond-above(xxl) {
+      img + p {
+        width: 19.2em;
+      }
+    }
+  }
+
+  &__jennie {
+    grid-area: three;
+
+    @include respond-above(xxl) {
+      img + p {
+        width: 20em;
+      }
+    }
+  }
+
   img {
     border-radius: 100%;
     height: 4.5rem;
@@ -350,6 +532,11 @@ p {
     font-size: 16px;
     letter-spacing: 3px;
     text-transform: uppercase;
+
+    @include respond-above(xxl) {
+      font-size: 1.3rem;
+      letter-spacing: 5px;
+    }
   }
 
   h4 {
@@ -363,37 +550,50 @@ p {
   }
 
   & div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
 
-    img {
-      margin-bottom: 30px;
-    }
+    // img {
+    //   margin-bottom: 30px;
+    // }
 
-    p {
-      margin-bottom: 35px;
-    }
+    // p {
+    //   margin-bottom: 35px;
+    // }
 
-    h4 {
-      margin-bottom: 10px;
-    }
+    // h4 {
+    //   margin-bottom: 10px;
+    // }
 
-    h4 + p {
-      font-size: 14px;
-      color: map-get($neutral-colors, grayishBlue);
-    }
+    // h4 + p {
+    //   font-size: 14px;
+    //   color: map-get($neutral-colors, grayishBlue);
+    // }
   }
 }
 
 .desktop-gallery {
   display: none;
+
+  @include respond-above(xxl) {
+    display: flex;
+
+    img {
+      flex: 1 1 25%;
+      width: 100%;
+    }
+  }
 }
 
 .mobile-gallery {
   display: flex;
   flex-wrap: wrap;
+
+  @include respond-above(xxl) {
+    display: none;
+  }
 
   img {
     flex: 1 1 50%;
